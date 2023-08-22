@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import StepIndicators from './StepIndicators';
+import StepMessage from './StepMessage';
+import StepActions from './StepActions';
+import { messages } from './stepData';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+ const steps = messages.length;
+ const [stepCounter, setStepCounter] = useState(1);
+
+ const next = () => {
+  if (stepCounter === steps) return;
+  setStepCounter((prev) => ++prev);
+ };
+ const prev = () => {
+  if (stepCounter === 1) return;
+  setStepCounter((prev) => --prev);
+ };
+
+ return (
+  <>
+   <div class='steps'>
+    <StepIndicators steps={steps} counter={stepCounter} />
+    <StepMessage message={messages[stepCounter - 1]} />
+    <StepActions next={next} prev={prev} />
+   </div>
+  </>
+ );
+};
 
 export default App;

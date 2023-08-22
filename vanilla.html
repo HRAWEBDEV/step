@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="./index.css" />
+  <title>Vanilla JS steps</title>
+ </head>
+ <body>
+  <div class="steps">
+   <div class="numbers">
+    <div data-steps class="step-1">1</div>
+    <div data-steps class="step-2">2</div>
+    <div data-steps class="step-3">3</div>
+   </div>
+
+   <p class="message"></p>
+
+   <div class="buttons">
+    <button class="previous">Previous</button>
+    <button class="next">Next</button>
+   </div>
+  </div>
+
+  <script>
+   const messages = [
+    'Learn React ⚛️',
+    'Apply for jobs 💼',
+    'Invest your new income 🤑',
+   ];
+   const steps = [...document.querySelectorAll('[data-steps]')];
+   const message = document.querySelector('.message');
+   const nextBtn = document.querySelector('.next');
+   const prevBtn = document.querySelector('.previous');
+   let stepCounter = 1;
+
+   const updateUi = () => {
+    message.textContent = `${messages[stepCounter - 1]}`;
+    steps.forEach((step, index) => {
+     step.classList.remove('active');
+     index <= stepCounter - 1 && step.classList.add('active');
+    });
+   };
+
+   const onPrevClick = () => {
+    if (stepCounter == 1) return;
+    --stepCounter;
+    updateUi();
+   };
+
+   const onNextClick = () => {
+    if (stepCounter == 3) return;
+    ++stepCounter;
+    updateUi();
+   };
+   nextBtn.addEventListener('click', onNextClick);
+   prevBtn.addEventListener('click', onPrevClick);
+   updateUi();
+  </script>
+ </body>
+</html>
