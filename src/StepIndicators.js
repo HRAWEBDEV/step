@@ -1,6 +1,6 @@
 const StepIndicators = ({ counter, steps }) => {
  return (
-  <div class='numbers'>
+  <div className='numbers'>
    {new Array(steps)
     .fill(undefined)
     .map((item, index) => index + 1)

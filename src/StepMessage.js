@@ -1,5 +1,5 @@
 const StepMessage = ({ message }) => {
- return <p class='message'>{message}</p>;
+ return <p className='message'>{message}</p>;
 };
 
 export default StepMessage;

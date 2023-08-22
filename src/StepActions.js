@@ -1,10 +1,10 @@
 const StepActions = ({ next, prev }) => {
  return (
-  <div class='buttons'>
-   <button class='next' onClick={prev}>
+  <div className='buttons'>
+   <button className='next' onClick={prev}>
     Previous
    </button>
-   <button class='previous' onClick={next}>
+   <button className='previous' onClick={next}>
     Next
    </button>
   </div>

@@ -19,7 +19,7 @@ const App = () => {
 
  return (
   <>
-   <div class='steps'>
+   <div className='steps'>
     <StepIndicators steps={steps} counter={stepCounter} />
     <StepMessage message={messages[stepCounter - 1]} />
     <StepActions next={next} prev={prev} />
